@@ -2,13 +2,25 @@ package main
 
 import "fmt"
 
+type LuasPersegi struct {
+	sisi int
+}
+type User struct {
+	Nama string `json:"nama"`
+	Umur int    `json:"umur"`
+}
+
 func main() {
 	nama := "Budi"
 	umur := 10
 
 	fmt.Println(nama)
 	fmt.Println(umur)
-	LPersegi(4)
+
+	luas1 := LuasPersegi{
+		sisi: 8,
+	}
+	fmt.Println(LPersegi(&luas1, 9))
 
 	user := User{
 		Nama: "agus",
@@ -22,9 +34,9 @@ func main() {
 	tambahUmurPointer(&user, 5)
 }
 
-func LPersegi(sisi int) {
+func LPersegi(l *LuasPersegi, sisi int) int {
 	L := sisi * sisi
-	fmt.Println(L)
+	return L
 }
 
 // type User struct {
